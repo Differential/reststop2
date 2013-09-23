@@ -30,9 +30,9 @@ WRITING AN API
 Here's some simple API methods:
 
     if (Meteor.isServer) {
-      Meteor.RESTstop.configure({use_auth: true});
+      RESTstop.configure({use_auth: true});
 
-      Meteor.RESTstop.add('get_user', function() {
+      RESTstop.add('get_user', function() {
         if(!this.user) {
           return {'is_loggedin': false};
         }
@@ -42,14 +42,14 @@ Here's some simple API methods:
         };
       });
 
-      Meteor.RESTstop.add('get_num/:id?', function() {
+      RESTstop.add('get_num/:num?', function() {
         if(!this.params.num) {
           return [403, {success: false, message: 'You need a num as a parameter!'}];
         }
         return this.params.num;
       });
 
-      Meteor.RESTstop.add('posts', {require_login: true}, function() {
+      RESTstop.add('posts', {require_login: true}, function() {
         var posts = [];
         Posts.find({owner_id: this.user._id}).forEach(function(post) {
 
@@ -71,14 +71,14 @@ The following `configure` options are available:
 
 **Options for add()**
 
-For `Meteor.RESTstop.add`, the following options (second parameter) are available:
+For `RESTstop.add`, the following options (second parameter) are available:
 
   * `require_login` (default: false): *If true, the method will return a 403 if the user is not logged in.*
   * `method` (default: undefined): *A string ("POST") or array (["POST", "GET"]) of allowed HTTP methods.*
 
 **URL structure**
 
-The `path` is the first parameter of `Meteor.RESTstop.add`. You can pass it a string or regex.
+The `path` is the first parameter of `RESTstop.add`. You can pass it a string or regex.
 
 If you pass it `test/path`, the full path will be `http://yoursite.com/api/test/path`.
 
@@ -116,7 +116,7 @@ Or, include an error code AND headers (first and second elements, respectively):
 
 Or, skip using a function at all:
 
-    Meteor.RESTstop.add('/404', [404, "There's nothing here!"]);
+    RESTstop.add('/404', [404, "There's nothing here!"]);
 
 **Using Authentication:**
 
@@ -125,17 +125,17 @@ and include them with every request. See below for examples.
 
 **Accessing Server Methods**
 
-You can access server methods using `Meteor.RESTstop.apply(this, 'method_name', [..args..])`:
+You can access server methods using `RESTstop.apply(this, 'method_name', [..args..])`:
 
-    result = Meteor.RESTstop.apply(this, 'method_name', [arg1, arg2]);
+    result = RESTstop.apply(this, 'method_name', [arg1, arg2]);
 
 Or using `call`:
 
-    result = Meteor.RESTstop.call(this, 'method_name', arg1, arg2);
+    result = RESTstop.call(this, 'method_name', arg1, arg2);
 
 You can also get published data in a similar manner:
 
-    result = Meteor.RESTstop.getPublished(this, 'method_name', [arg1, arg2]);
+    result = RESTstop.getPublished(this, 'method_name', [arg1, arg2]);
     result.fetch() // You'll need to manually fetch the results
 
 If you have `use_auth` on and the user is authenticated (see above), you'll be able to access `this.userId` and `Meteor.user()` as normal. 
