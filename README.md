@@ -19,10 +19,8 @@ with a few major differences:
 INSTALLATION
 ------------
 
-Currently not in Atmosphere (not yet stable), so you have to install it manually:
-
     cd your-meteor-project
-    git submodule add git@github.com:gkoberger/meteor-reststop.git packages/reststop
+    mrt add reststop2
 
 WRITING AN API
 --------------
