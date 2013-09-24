@@ -1,3 +1,7 @@
+Npm.depends({
+  "connect": "2.9.0"
+});
+
 Package.describe({
   summary: "Add the ability to do RESTful APIs with Meteor 0.6.5."
 });

@@ -115,7 +115,7 @@ _RESTstop.prototype._start = function(){
   RoutePolicy.declare('/' + this._config.api_path + '/', 'network');
 
   var self = this,
-      connect = Meteor.require("connect");
+      connect = Npm.require("connect");
 
   WebApp.connectHandlers.use(function(req, res, next) {
     connect.query();
@@ -130,7 +130,7 @@ _RESTstop.prototype._start = function(){
 
     // need to wrap in a fiber in case they do something async
     // (e.g. in the database)
-    if(typeof(Fiber)=="undefined") Fiber = Meteor.require('fibers');
+    if(typeof(Fiber)=="undefined") Fiber = Npm.require('fibers');
 
     Fiber(function() {
       var output = RESTstop.match(req, res);
