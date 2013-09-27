@@ -37,7 +37,7 @@ var loginWithPassword = function (options) {
   // Just check the verifier output when the same identity and salt
   // are passed. Don't bother with a full exchange.
   var verifier = user.services.password.srp;
-  var newVerifier = Meteor._srp.generateVerifier(options.password, {
+  var newVerifier = SRP.generateVerifier(options.password, {
     identity: verifier.identity, salt: verifier.salt});
 
     if (verifier.verifier !== newVerifier.verifier)
