@@ -46,10 +46,10 @@ _RESTstop.prototype.match = function(request, response) {
       for (var key in context.params)
         args.push(context.params[key]);
 
-      if(request.method == "POST") {
+      if(request.method == "POST" || request.method == "PUT") {
         context.parms = _.extend(context.params, request.body);
       }
-      if(request.method == "GET") {
+      if(request.method == "GET" || _.size(request.query)) {
         context.parms = _.extend(context.params, request.query);
       }
 
