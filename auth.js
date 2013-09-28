@@ -72,9 +72,16 @@ _RESTstop.prototype.initAuth = function() {
     return login;
   });
 
-  RESTstop.add('logout', {'method': 'POST'}, function() {
+  RESTstop.add('logout', {'method': 'GET', require_login: true}, function() {
+    var loginToken = this.params.loginToken;
+    if(this.request.headers['x-login-token']) {
+      loginToken = this.request.headers['x-login-token'];
+    }
+
     // Log the user out
-    // (We should delete the token... but even Meteor doesn't actually do this)
+    Meteor.users.update(
+    this.user._id, {$pull: {'services.resume.loginTokens': {token: loginToken}}});
+
     return {success: true, message: "You've been logged out!"};
   });
 };
