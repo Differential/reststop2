@@ -47,10 +47,10 @@ _RESTstop.prototype.match = function(request, response) {
         args.push(context.params[key]);
 
       if(request.method == "POST" || request.method == "PUT") {
-        context.parms = _.extend(context.params, request.body);
+        _.extend(context.params, request.body);
       }
       if(request.method == "GET" || _.size(request.query)) {
-        context.parms = _.extend(context.params, request.query);
+        _.extend(context.params, request.query);
       }
 
       if(this._config.use_auth) {
@@ -95,7 +95,7 @@ _RESTstop.prototype.configure = function(config){
     throw new Error("RESTstop.configure() has to be called before first call to RESTstop.add()");
   }
 
-  this._config = _.extend(this._config, config);
+  _.extend(this._config, config);
 
   if(this._config.api_path[0] != "/") {
     this._config.api_path = "/"  +this._config.api_path;
