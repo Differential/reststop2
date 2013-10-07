@@ -37,7 +37,7 @@ _RESTstop.prototype.add = function(path, options, endpoint)  {
 
 _RESTstop.prototype.match = function(request, response) {
   for (var i = 0; i < this._routes.length; i++) {
-    var params = [], route = this._routes[i];
+    var params = {}, route = this._routes[i];
 
     if (route[0].match(request.url, request.method, params)) {
       context = {request: request, response: response, params: params};
