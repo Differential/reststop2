@@ -1,5 +1,5 @@
-name: accounts-entry
+name: reststop2
 markdown: redcarpet
 pygments: true
-baseurl: /accounts-entry
+baseurl: /reststop2
 exclude: ["vendor"]
