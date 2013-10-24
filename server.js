@@ -2,7 +2,7 @@ _RESTstop = function() {
   this._routes = [];
   this._config = {
     use_auth: false,
-    api_path: 'api',
+    api_path: '/api',
   };
   this._started = false;
 };
