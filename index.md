@@ -2,7 +2,7 @@
 layout: default
 username: BeDifferential
 repo: reststop2
-version: 0.5.2
+version: 0.5.3
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5.
 
 ---
