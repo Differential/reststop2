@@ -68,7 +68,7 @@ _RESTstop.prototype.initAuth = function() {
       return [e.error, {success: false, message: e.reason}];
     }
 
-    RESTstop._config.onLoggedIn();
+    RESTstop._config.onLoggedIn.call(this);
 
     login.success = true;
     return login;
@@ -83,9 +83,9 @@ _RESTstop.prototype.initAuth = function() {
     // Log the user out
     Meteor.users.update(
     this.user._id, {$pull: {'services.resume.loginTokens': {token: loginToken}}});
-    
-    RESTstop._config.onLoggedOut();
-    
+
+    RESTstop._config.onLoggedOut.call(this);
+
     return {success: true, message: "You've been logged out!"};
   });
 };
