@@ -68,7 +68,15 @@ _RESTstop.prototype.initAuth = function() {
       return [e.error, {success: false, message: e.reason}];
     }
 
-    RESTstop._config.onLoggedIn.call(this);
+    // Get the user object
+    var context = [];
+    if(login.userId && login.loginToken) {
+      context.user = Meteor.users.findOne({
+        _id: login.userId, 
+        "services.resume.loginTokens.token": login.loginToken
+      });
+    }
+    RESTstop._config.onLoggedIn.apply(context);
 
     login.success = true;
     return login;
