@@ -2,11 +2,15 @@
 layout: default
 username: BeDifferential
 repo: reststop2
-version: 0.5.3
+version: 0.5.4
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5.
 
 ---
 # Changelog
+
+### v0.5.4
+
+* Add `onLoggedIn` and `onLoggedOut` callbacks to configuration options.
 
 ### v0.5.3
 
