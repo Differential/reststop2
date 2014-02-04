@@ -3,6 +3,6 @@
   "description": "Add the ability to do RESTful APIs with Meteor 0.6.5.",
   "homepage": "https://github.com/BeDifferential/reststop2",
   "author": "Gerard Sychay (http://differential.io)",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "git": "https://github.com/BeDifferential/reststop2.git"
 }
