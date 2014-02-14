@@ -267,7 +267,8 @@ _RESTstop.prototype._apply = function (context, name, args, handler_name) {
 
     var invocation = new MethodInvocation({
       isSimulation: false,
-      userId: context.user._id, setUserId: setUserId,
+      userId: userId,
+      setUserId: setUserId,
       sessionData: self.sessionData
     });
 
