@@ -2,13 +2,13 @@
 layout: default
 username: BeDifferential
 repo: reststop2
-version: 0.5.5
+version: 0.5.6
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5.
 
 ---
 # Changelog
 
-### v0.5.5
+### v0.5.6
 
 * Fix issue [#9](https://github.com/BeDifferential/reststop2/pull/9)
 
