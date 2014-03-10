@@ -86,7 +86,7 @@ The following options are available for `RESTstop.configure`:
 * `api_path`
   - Default: 'api'
   - The base path for your API. If you use 'api' and add a route called
-    'get_user', the URL will be 'http://yoursite.com/api/get_user/'
+    'get\_user', the URL will be 'http://yoursite.com/api/get\_user/'
 * `bodyParser`:
   - Options for `bodyParser` (see [node-formidable](https://github.com/felixge/node-formidable))
 
@@ -164,11 +164,6 @@ Or, skip using a function at all:
 {% highlight javascript %}
 RESTstop.add('/404', [404, "There's nothing here!"]);
 {% endhighlight %}
-
-### Authentication
-
-When you log in, you'll get a `userId` and `loginToken` back. You must save
-these and include them with every request. See below for examples.
 
 ### Accessing Server Methods
 
