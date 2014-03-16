@@ -3,6 +3,7 @@ _RESTstop = function() {
   this._config = {
     use_auth: false,
     api_path: '/api',
+    pretty_json: true,
     onLoggedIn: function(){},
     onLoggedOut: function(){}
   };
@@ -166,7 +167,11 @@ _RESTstop.prototype._start = function(){
       }
 
       if(_.isObject(output)) {
-        output = JSON.stringify(output);
+        if (self._config.pretty_json) {
+          output = JSON.stringify(output, null, "  ");
+        } else {
+          output = JSON.stringify(output);
+        }
         res.setHeader("Content-Type", "text/json");
       }
 
