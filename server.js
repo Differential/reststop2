@@ -166,7 +166,7 @@ _RESTstop.prototype._start = function(){
       }
 
       if(_.isObject(output)) {
-        output = JSON.stringify(output);
+        output = JSON.stringify(output, null, "  ");
         res.setHeader("Content-Type", "text/json");
       }
 
