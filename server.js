@@ -3,7 +3,7 @@ _RESTstop = function() {
   this._config = {
     use_auth: false,
     api_path: '/api',
-    pretty_json: true,
+    pretty_json: false,
     onLoggedIn: function(){},
     onLoggedOut: function(){}
   };
