@@ -68,8 +68,6 @@ RESTstop.Route.prototype.match = function(path, method, params){
       params[key.name] = undefined !== params[key.name]
         ? params[key.name]
         : val;
-    } else {
-      params.push(val);
     }
   }
 
