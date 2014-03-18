@@ -2,8 +2,8 @@
 layout: default
 username: BeDifferential
 repo: reststop2
-version: 0.5.6
-desc: Add the ability to do RESTful APIs with Meteor 0.6.5.
+version: 0.5.7
+desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 
@@ -87,6 +87,9 @@ The following options are available for `RESTstop.configure`:
   - Default: 'api'
   - The base path for your API. If you use 'api' and add a route called
     'get\_user', the URL will be 'http://yoursite.com/api/get\_user/'
+* `pretty_json`
+  - Default: false
+  - Render formatted JSON in response.
 * `bodyParser`:
   - Options for `bodyParser` (see [node-formidable](https://github.com/felixge/node-formidable))
 

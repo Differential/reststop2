@@ -2,11 +2,16 @@
 layout: default
 username: BeDifferential
 repo: reststop2
-version: 0.5.6
-desc: Add the ability to do RESTful APIs with Meteor 0.6.5.
+version: 0.5.7
+desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 # Changelog
+
+### v0.5.7
+
+* Add `pretty_json` config option
+* Fix issue with catch-all route ([#14](https://github.com/BeDifferential/reststop2/issues/14))
 
 ### v0.5.6
 
