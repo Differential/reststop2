@@ -91,7 +91,7 @@ The following options are available for `RESTstop.configure`:
   - Default: false
   - Render formatted JSON in response.
 * `bodyParser`:
-  - Options for `bodyParser` (see [node-formidable](https://github.com/felixge/node-formidable))
+  - Options for [Connect.bodyParser](http://www.senchalabs.org/connect/bodyParser.html)
 
 ### Route Options
 
