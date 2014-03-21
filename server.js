@@ -4,8 +4,9 @@ _RESTstop = function() {
     use_auth: false,
     api_path: '/api',
     pretty_json: false,
-    onLoggedIn: function(){},
-    onLoggedOut: function(){}
+    bodyParser: {},
+    onLoggedIn: function() {},
+    onLoggedOut: function() {}
   };
   this._started = false;
 };
@@ -121,7 +122,7 @@ _RESTstop.prototype._start = function(){
       connect = Npm.require("connect");
 
   WebApp.connectHandlers.use(connect.query());
-  WebApp.connectHandlers.use(connect.bodyParser());
+  WebApp.connectHandlers.use(connect.bodyParser(this._config.bodyParser));
   WebApp.connectHandlers.use(function(req, res, next) {
     if (req.url.slice(0, self._config.api_path.length) !== self._config.api_path) {
       return next();
