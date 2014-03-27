@@ -1,8 +1,8 @@
 {
   "name": "reststop2",
   "description": "Add the ability to do RESTful APIs with Meteor 0.6.5 and up.",
-  "homepage": "https://github.com/Differential/reststop2",
+  "homepage": "http://github.differential.io/reststop2/",
   "author": "Gerard Sychay (http://differential.io)",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "git": "https://github.com/Differential/reststop2.git"
 }
