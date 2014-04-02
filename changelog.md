@@ -1,12 +1,16 @@
 ---
 layout: default
-username: BeDifferential
+username: Differential
 repo: reststop2
-version: 0.5.7
+version: 0.5.8
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 # Changelog
+
+### v0.5.8
+
+* Fix bug where `bodyParser` options not passed in to `connect`.
 
 ### v0.5.7
 

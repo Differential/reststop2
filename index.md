@@ -1,8 +1,8 @@
 ---
 layout: default
-username: BeDifferential
+username: Differential
 repo: reststop2
-version: 0.5.7
+version: 0.5.8
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
@@ -137,26 +137,32 @@ Each method gets access to:
 
 ### Response Data
 
-You can return a string:
+You can return a raw string:
 
 {% highlight javascript %}
 return "That's current!";
 {% endhighlight %}
 
-Or, a JSON object:
+Or, a raw JSON object:
 
 {% highlight javascript %}
 return { json: 'object' };
 {% endhighlight %}
 
-Or, include an error code by using an array with the error code as the first
+Or, a raw array (must wrap it in another array):
+
+{% highlight javascript %}
+return [ [ 'red', 'green', 'blue' ] ];
+{% endhighlight %}
+
+Or, include a status code by using an array with the status code as the first
 element:
 
 {% highlight javascript %}
 return [404, { success: false, message: "There's nothing here!" }];
 {% endhighlight %}
 
-Or, include an error code AND headers (first and second elements, respectively):
+Or, include a status code AND headers (first and second elements, respectively):
 
 {% highlight javascript %}
 return [404, { 'Content-Type': 'text/plain' }, { success: false, message: "There's nothing here!" }];
