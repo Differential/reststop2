@@ -16,9 +16,10 @@
  * @api private
  */
 
-RESTstop.Route = function(path, options) {
+RESTstop.Route = function(realPath, original, options) {
   this.options = options || {};
-  this.path = path;
+  this.originalPath = original;
+  this.path = realPath + original;
   this.method = this.options.method;
 
   if(this.method && !_.isArray(this.method)) {
@@ -28,7 +29,7 @@ RESTstop.Route = function(path, options) {
       this.method = _.map(this.method, function(s){ return s.toUpperCase(); });
   }
 
-  this.regexp = pathtoRegexp(path
+  this.regexp = pathtoRegexp(this.path
     , this.keys = []
     , this.options.sensitive
     , this.options.strict);

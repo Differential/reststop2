@@ -9,6 +9,7 @@ _RESTstop = function() {
     onLoggedOut: function() {}
   };
   this._started = false;
+  this._configured = false;
 };
 
 // simply match this path to this function
@@ -35,7 +36,7 @@ _RESTstop.prototype.add = function(path, options, endpoint)  {
     if (! _.isFunction(endpoint)) {
       endpoint = _.bind(_.identity, null, endpoint);
     }
-    self._routes.push([new RESTstop.Route(self._config.api_path + path, options), endpoint]);
+    self._routes.push([new RESTstop.Route(self._config.api_path, path, options), endpoint]);
   }
 };
 
@@ -95,14 +96,32 @@ _RESTstop.prototype.match = function(request, response) {
 };
 
 _RESTstop.prototype.configure = function(config){
-  if(this._started){
-    throw new Error("RESTstop.configure() has to be called before first call to RESTstop.add()");
+  if(this._configured){
+    throw new Error("RESTstop.configure() can only be called once");
   }
+
+  this._configured = true;
 
   _.extend(this._config, config);
 
   if(this._config.api_path[0] != "/") {
     this._config.api_path = "/"  +this._config.api_path;
+  }
+
+  RoutePolicy.declare('/' + this._config.api_path + '/', 'network');
+
+  for (var i = 0; i< this._routes.length; i++) {
+    var route = this._routes[i]
+      , newRoute = [
+          new RESTstop.Route(this._config.api_path, route[0].originalPath, route[0].options),
+          route[1]
+        ];
+
+    this._routes[i] = newRoute;
+  }
+
+  if(this._config.use_auth) {
+    RESTstop.initAuth();
   }
 };
 
@@ -116,8 +135,6 @@ _RESTstop.prototype._start = function(){
   this._started = true;
 
   // hook up the serving
-  RoutePolicy.declare('/' + this._config.api_path + '/', 'network');
-
   var self = this,
       connect = Npm.require("connect");
 
@@ -179,10 +196,6 @@ _RESTstop.prototype._start = function(){
       return res.end(output);
     }).run();
   });
-
-  if(this._config.use_auth) {
-    RESTstop.initAuth();
-  }
 };
 
 _RESTstop.prototype.call = function (context, name, args) { 
