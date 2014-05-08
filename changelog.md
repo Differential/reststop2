@@ -2,11 +2,15 @@
 layout: default
 username: Differential
 repo: reststop2
-version: 0.5.8
+version: 0.5.9
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 # Changelog
+
+### v0.5.9
+
+* Allow `configure()` to be called at any time (but only once) ([#19](https://github.com/Differential/reststop2/issues/19))
 
 ### v0.5.8
 
@@ -15,11 +19,11 @@ desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 ### v0.5.7
 
 * Add `pretty_json` config option
-* Fix issue with catch-all route ([#14](https://github.com/BeDifferential/reststop2/issues/14))
+* Fix issue with catch-all route ([#14](https://github.com/Differential/reststop2/issues/14))
 
 ### v0.5.6
 
-* Fix issue [#9](https://github.com/BeDifferential/reststop2/pull/9)
+* Fix issue [#9](https://github.com/Differential/reststop2/pull/9)
 
 ### v0.5.4
 

@@ -2,7 +2,7 @@
 layout: default
 username: Differential
 repo: reststop2
-version: 0.5.8
+version: 0.5.9
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
