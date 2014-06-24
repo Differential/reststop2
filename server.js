@@ -190,7 +190,7 @@ _RESTstop.prototype._start = function(){
         } else {
           output = JSON.stringify(output);
         }
-        if (res.getHeader("Content-Type")) {
+        if (!res.getHeader("Content-Type")) {
           res.setHeader("Content-Type", "text/json");
         }
       }
