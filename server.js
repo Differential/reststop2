@@ -74,7 +74,7 @@ _RESTstop.prototype.match = function(request, response) {
         // Get the user object
         if(userId && loginToken) {
           context.user = Meteor.users.findOne({
-            _id: userId, 
+            _id: userId,
             "services.resume.loginTokens.token": loginToken
           });
         }
@@ -156,7 +156,7 @@ _RESTstop.prototype._start = function(){
       if (output === false) {
         output = [404, {success: false, message:'API method not found'}];
       }
-      
+
       // parse out the various type of response we can have
 
       // array can be
@@ -190,7 +190,9 @@ _RESTstop.prototype._start = function(){
         } else {
           output = JSON.stringify(output);
         }
-        res.setHeader("Content-Type", "text/json");
+        if (!res.getHeader("Content-Type")) {
+          res.setHeader("Content-Type", "text/json");
+        }
       }
 
       return res.end(output);
@@ -198,16 +200,16 @@ _RESTstop.prototype._start = function(){
   });
 };
 
-_RESTstop.prototype.call = function (context, name, args) { 
+_RESTstop.prototype.call = function (context, name, args) {
   var args = Array.prototype.slice.call(arguments, 2);
   return this._apply(context, name, args, 'method_handlers');
 };
 
-_RESTstop.prototype.apply = function (context, name, args) { 
+_RESTstop.prototype.apply = function (context, name, args) {
   return this._apply(context, name, args, 'method_handlers');
 };
 
-_RESTstop.prototype.getPublished = function (context, name, args) { 
+_RESTstop.prototype.getPublished = function (context, name, args) {
   return this._apply(context, name, args, 'publish_handlers');
 };
 
@@ -269,7 +271,7 @@ _.extend(MethodInvocation.prototype, {
   }
 });
 
-_RESTstop.prototype._apply = function (context, name, args, handler_name) { 
+_RESTstop.prototype._apply = function (context, name, args, handler_name) {
   var self = Meteor.default_server;
 
   // Run the handler
