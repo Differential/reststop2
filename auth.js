@@ -30,24 +30,37 @@ var loginWithPassword = function (options) {
   if (!user)
     throw new Meteor.Error(403, "User not found");
 
-  if (!user.services || !user.services.password ||
-  !user.services.password.srp)
-  throw new Meteor.Error(403, "User has no password set");
+  if (!user.services || !user.services.password)
+    throw new Meteor.Error(403, "User has no password set");
 
-  // Just check the verifier output when the same identity and salt
-  // are passed. Don't bother with a full exchange.
-  var verifier = user.services.password.srp;
-  var newVerifier = SRP.generateVerifier(options.password, {
-    identity: verifier.identity, salt: verifier.salt});
+  if (!user.services.password.srp) {
+    // Meteor 0.8.2+
+    var resultOfInvocation = Accounts._checkPassword(user, options.password);
+
+    if (resultOfInvocation.error)
+      throw new Meteor.Error(403, "Incorrect password");
+  }
+  else {
+    // pre Meteor 0.8.2
+
+    // Just check the verifier output when the same identity and salt
+    // are passed. Don't bother with a full exchange.
+    var verifier = user.services.password.srp;
+    var newVerifier = SRP.generateVerifier(options.password, {
+      identity: verifier.identity,
+      salt: verifier.salt
+    });
 
     if (verifier.verifier !== newVerifier.verifier)
       throw new Meteor.Error(403, "Incorrect password");
+  }
 
-    var stampedLoginToken = Accounts._generateStampedLoginToken();
-    Meteor.users.update(
-    user._id, {$push: {'services.resume.loginTokens': stampedLoginToken}});
+  var stampedLoginToken = Accounts._generateStampedLoginToken();
+  Meteor.users.update(user._id, {
+    $push: {'services.resume.loginTokens': stampedLoginToken}
+  });
 
-    return {loginToken: stampedLoginToken.token, userId: user._id};
+  return {loginToken: stampedLoginToken.token, userId: user._id};
 };
 
 _RESTstop.prototype.initAuth = function() {
