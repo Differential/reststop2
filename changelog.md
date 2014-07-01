@@ -2,11 +2,16 @@
 layout: default
 username: Differential
 repo: reststop2
-version: 0.5.9
+version: 0.6.0
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 # Changelog
+
+### v0.6.0
+
+* Enable Meteor 0.8.2 auth compatibility ([#22](https://github.com/Differential/reststop2/issues/22))
+* Allow app to overrise `Content-Type` header ([#24](https://github.com/Differential/reststop2/pull/24))
 
 ### v0.5.9
 
