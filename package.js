@@ -4,11 +4,12 @@ Npm.depends({
 
 Package.describe({
   summary: "Add the ability to do RESTful APIs with Meteor 0.6.5.",
-  version: "0.7.0",
+  version: "0.7.1",
+  name: "hellogerard:reststop2",
   git: "https://github.com/Differential/reststop2.git"
 });
 
-Package.on_use(function (api) {
+Package.onUse(function (api) {
   api.versionsFrom("METEOR@0.9.0");
   api.use('check', 'server');
   api.use('routepolicy', 'server');
