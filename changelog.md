@@ -2,11 +2,15 @@
 layout: default
 username: Differential
 repo: reststop2
-version: 0.6.0
+version: 0.7.0
 desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 # Changelog
+
+### v0.7.0
+
+* Make compatible with Meteor 0.9.0 package server
 
 ### v0.6.0
 
