@@ -7,9 +7,16 @@ desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 ---
 
-**NOTE**: Based on the excellent
-[`reststop`](https://github.com/gkoberger/meteor-reststop) package by Gregory
-Koberger, updated for Meteor 0.6.5.
+---
+
+**This package is deprecated.** I will fix bugs, but will neither add new
+features nor ensure future Meteor compatibility. Everything that this package is
+capable of can now be accomplished using
+[`iron-router`](https://atmospherejs.com/iron/router) server-side routes and
+core Meteor packages (for example `accounts-password`). Thanks for using
+`reststop2`.
+
+---
 
 # Reststop2
 
