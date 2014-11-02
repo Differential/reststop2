@@ -42,7 +42,7 @@ desc: Add the ability to do RESTful APIs with Meteor 0.6.5 and up.
 
 * Fix bug where `configure` was required, even if it was empty (#4).
 * Fix bug where server method invocation (`RESTstop.call`) did not work (#5).
-* Move package documentation to http://github.differential.io/reststop2
+* Move package documentation to http://github.differential.com/reststop2
 
 ### v0.5.2
 
